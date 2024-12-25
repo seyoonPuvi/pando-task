@@ -1,0 +1,111 @@
+export const dummyData = [
+  {
+    id: 1,
+
+    origin: { name: "Laredo", state: "TX", pincode: "" },
+    destination: {
+      name: "Grand Piraire",
+      state: "TX",
+      pincode: "",
+    },
+    carrier: { name: "CH Robinson", type: "FTH" },
+    max: 74,
+    maxType: "WT",
+    vehicle: "53 Ft Trailer",
+    weight: 8055,
+    unit: "lbs",
+    order: 40,
+    quantity: 33,
+  },
+
+  {
+    id: 2,
+
+    origin: { name: "Laredo", state: "TX", pincode: "" },
+    destination: {
+      name: "Grand Piraire",
+      state: "TX",
+      pincode: "",
+    },
+    carrier: { name: "CH Robinson", type: "FTH" },
+    max: 74,
+    maxType: "WT",
+    vehicle: "53 Ft Trailer",
+    weight: 8055,
+    unit: "lbs",
+    order: 40,
+    quantity: 33,
+  },
+  {
+    id: 3,
+
+    origin: { name: "Laredo", state: "TX", pincode: "" },
+    destination: {
+      name: "Grand Piraire",
+      state: "TX",
+      pincode: "",
+    },
+    carrier: { name: "American Freight Lodge", type: "private fleet" },
+    max: 90,
+    maxType: "Vol",
+    vehicle: "MH 3092",
+    weight: 9000,
+    unit: "cft",
+    order: 40,
+    quantity: 33,
+  },
+  {
+    id: 4,
+
+    origin: { name: "Laredo", state: "TX", pincode: "" },
+    destination: {
+      name: "Grand Piraire",
+      state: "TX",
+      pincode: "",
+    },
+    carrier: { name: "CH Robinson", type: "FTH" },
+    max: 74,
+    maxType: "WT",
+    vehicle: "53 Ft Trailer",
+    weight: 8055,
+    unit: "lbs",
+    order: 40,
+    quantity: 33,
+  },
+  {
+    id: 5,
+
+    origin: { name: "Laredo", state: "TX", pincode: "" },
+    destination: {
+      name: "Grand Piraire",
+      state: "TX",
+      pincode: "",
+    },
+    carrier: { name: "Monore Transport", type: "Private fleet" },
+    max: 90,
+    maxType: "WT",
+    vehicle: "53 Ft Trailer",
+    weight: 1200,
+    unit: "cft",
+    order: 40,
+    quantity: 33,
+  },
+  {
+    id: 6,
+
+    origin: { name: "Laredo", state: "TX", pincode: "" },
+    destination: {
+      name: "Grand Piraire",
+      state: "TX",
+      pincode: "",
+    },
+    carrier: { name: "CH Robinson", type: "FTH" },
+    max: 74,
+    maxType: "WT",
+    vehicle: "53 Ft Trailer",
+    weight: 8055,
+    unit: "lbs",
+    order: 40,
+    quantity: 33,
+  },
+];
