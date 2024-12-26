@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/pando-task/static/css/main.98ce9de1.css",
+    "main.js": "/pando-task/static/js/main.6e58894a.js",
+    "index.html": "/pando-task/index.html",
+    "main.98ce9de1.css.map": "/pando-task/static/css/main.98ce9de1.css.map",
+    "main.6e58894a.js.map": "/pando-task/static/js/main.6e58894a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98ce9de1.css",
+    "static/js/main.6e58894a.js"
+  ]
+}
