@@ -29,3 +29,8 @@ li {
 ul {
   padding-inline-start: 0;
 }
+
+.des-dummy-cont {
+  width: 20px;
+  height: 122px;
+}

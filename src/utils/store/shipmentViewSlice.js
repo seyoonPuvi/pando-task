@@ -4,8 +4,9 @@ const shipmentViewSlice = createSlice({
   name: "shipmentView",
   initialState: {
     selectedShipment: null,
-    showShipment: true,
+    showShipment: false,
     activeShipmentTab: "MAP",
+    isDetailsExpanded: false,
   },
 
   reducers: {
@@ -20,10 +21,17 @@ const shipmentViewSlice = createSlice({
     changeActiveShipmentTab: (state, action) => {
       state.activeShipmentTab = action.payload;
     },
+    toggleExpandDetails: (state) => {
+      state.isDetailsExpanded = !state.isDetailsExpanded;
+    },
   },
 });
 
-export const { selectShipment, closeShipment, changeActiveShipmentTab } =
-  shipmentViewSlice.actions;
+export const {
+  selectShipment,
+  closeShipment,
+  changeActiveShipmentTab,
+  toggleExpandDetails,
+} = shipmentViewSlice.actions;
 
 export default shipmentViewSlice.reducer;

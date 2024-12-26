@@ -30,18 +30,35 @@ import {
   MaterialImage,
   MaterialName,
 } from "./style";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  closeShipment,
+  selectShipment,
+} from "../../utils/store/shipmentViewSlice";
+import { Checkbox } from "../DisplaySection";
 const ListItem = ({ data, index }) => {
   const showShipment = useSelector((store) => store.shipmentView.showShipment);
+  const dispatch = useDispatch();
+  const isListSelected = useSelector(
+    (store) => store.shipmentView.selectedShipment?.id === data.id
+  );
+
+  const onClickShipmentList = (id) => {
+    if (isListSelected) {
+      dispatch(closeShipment());
+    } else {
+      dispatch(selectShipment(data));
+    }
+  };
   return (
-    <List>
-      <SubList width="10%">
+    <List onClick={() => onClickShipmentList(data.id)}>
+      <SubList width={showShipment ? "10%" : "5%"}>
         <DeliveryIconContainer>
-          <DeliveryIcon />
+          {!isListSelected ? <DeliveryIcon /> : <input type="checkbox" />}
         </DeliveryIconContainer>
         <Number>{index + 1}</Number>
       </SubList>
-      <SubList width={showShipment ? "20%" : "20%"}>
+      <SubList width={showShipment ? "15%" : "25%"}>
         <TextContainer>
           <Text>{data.origin.name}</Text>
           <SubText>
@@ -65,7 +82,7 @@ const ListItem = ({ data, index }) => {
           </PickupDropContainer>
         )}
       </SubList>
-      <SubList width={showShipment ? "20%" : "10%"}>
+      <SubList width={showShipment ? "15%" : "10%"}>
         <TextContainer>
           <Text>{data.destination.name}</Text>
           <SubText>
@@ -73,7 +90,7 @@ const ListItem = ({ data, index }) => {
           </SubText>
         </TextContainer>
       </SubList>
-      <SubList width={showShipment ? "20%" : "10%"}>
+      <SubList width={showShipment ? "15%" : "10%"}>
         <TextContainer>
           <Text>
             {data.carrier.name.length > 15
@@ -83,14 +100,19 @@ const ListItem = ({ data, index }) => {
           <SubText>{data.carrier.type}</SubText>
         </TextContainer>
       </SubList>
-      <SubList width={showShipment ? "20%" : "20%"}>
+      <SubList width={showShipment ? "35%" : "20%"}>
         <TextContainer>
           <PercentageContainer>
             <Percentage>{data.max} % </Percentage>
             <PercentageBar>
-              <PercentageIndicator width={`${data.max}%`} />
+              <PercentageIndicator
+                width={`${data.max}%`}
+                isVol={data.maxType === "Vol"}
+              />
             </PercentageBar>
-            <PercentageTag>{data.maxType}</PercentageTag>
+            <PercentageTag isVol={data.maxType === "Vol"}>
+              {data.maxType}
+            </PercentageTag>
           </PercentageContainer>
           <VehicleText>{data.vehicle}</VehicleText>
         </TextContainer>

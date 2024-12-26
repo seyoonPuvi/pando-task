@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const FilterHeaderContainer = styled.div`
@@ -90,7 +90,31 @@ const FilterIcon = styled.img`
   object-position: center;
 `;
 
+const LabelButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+
+  border-left: 0.5px solid #616161;
+  padding-left: 1rem;
+  margin-right: 2rem;
+`;
+const LabelCont = styled.div`
+  background-color: white;
+  border-radius: 16px;
+  color: #616161;
+  padding: 1rem;
+`;
+
+const LabelButton = styled.button`
+  padding: 0.5rem;
+  border-radius: 2px;
+  color: #616161;
+  cursor: pointer;
+`;
+
 const FilterHeader = () => {
+  const [showFilter, ToggleFilter] = useState(false);
   return (
     <FilterHeaderContainer>
       <FHMainContainer>
@@ -101,7 +125,25 @@ const FilterHeader = () => {
               <FilterOption>Arizona Zone Retail</FilterOption>
             </FilterDropDown>
           </DropDownContainer>
-          <FilterButton type="button">
+          {showFilter && (
+            <LabelButtonContainer>
+              <LabelCont>Label : Select V</LabelCont>
+              <LabelButton
+                type="button"
+                onClick={() => {
+                  ToggleFilter(false);
+                }}
+              >
+                X
+              </LabelButton>
+            </LabelButtonContainer>
+          )}
+          <FilterButton
+            type="button"
+            onClick={() => {
+              ToggleFilter(!showFilter);
+            }}
+          >
             <FilterIcon
               src="https://i.postimg.cc/YSNbyxbr/Mask.png"
               alt="filter-icon"

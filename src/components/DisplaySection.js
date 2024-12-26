@@ -82,13 +82,18 @@ const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
   column-gap: 3rem;
-  margin-left: 1.2rem;
 `;
-const Checkbox = styled.input`
+export const Checkbox = styled.input`
   width: 14px;
   height: 14px;
-  opacity: 0px;
+
+  margin-left: ${(props) => (props.showShipment ? "1.2rem" : "0")};
+
+  @media (min-width: 1300px) {
+    margin-left: 1.2rem;
+  }
 `;
+
 const CheckBoxTitle = styled.p`
   font-family: Open Sans;
   font-size: 10px;
@@ -131,24 +136,24 @@ const DisplaySection = () => {
         </SectionTitleContainer>
         <SectionListContainer>
           <ListTitleContainer>
-            <ListTitle width="10%">
+            <ListTitle width={showShipment ? "10%" : "5%"}>
               <CheckboxContainer>
-                <Checkbox type="checkbox" />
+                <Checkbox type="checkbox" showShipment={showShipment} />
                 <CheckBoxTitle>S.NO</CheckBoxTitle>
               </CheckboxContainer>
             </ListTitle>
-            <ListTitle width={showShipment ? "20%" : "20%"}>
+            <ListTitle width={showShipment ? "15%" : "25%"}>
               <ListHeading>ORIGIN</ListHeading>
               <DownArrowIcon />
             </ListTitle>
-            <ListTitle width={showShipment ? "20%" : "10%"}>
+            <ListTitle width={showShipment ? "15%" : "10%"}>
               <ListHeading>DESTINATION</ListHeading>
               <DownArrowIcon />
             </ListTitle>
-            <ListTitle width={showShipment ? "20%" : "10%"}>
+            <ListTitle width={showShipment ? "15%" : "10%"}>
               <ListHeading>CARRIER | TYPE</ListHeading>
             </ListTitle>
-            <ListTitle width={showShipment ? "20%" : "20%"}>
+            <ListTitle width={showShipment ? "35%" : "20%"}>
               <ListHeading>MAX UTILISATION | VEHICLE</ListHeading>
             </ListTitle>
             {!showShipment && (

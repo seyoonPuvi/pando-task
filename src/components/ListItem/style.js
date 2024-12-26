@@ -22,7 +22,7 @@ export const SubList = styled.div`
   align-items: center;
   column-gap: 3rem;
   width: ${(props) => props.width};
-  padding: 1rem 1.2rem;
+  padding: 1.5rem 1.2rem;
 `;
 
 export const DeliveryIconContainer = styled.div`
@@ -142,13 +142,13 @@ export const PercentageBar = styled.div`
 export const PercentageIndicator = styled.div`
   height: 100%;
   width: ${(props) => props.width || "auto"};
-  background-color: #ab63f8;
+  background-color: ${(props) => (props.isVol ? "#6397F8" : "#ab63f8")};
   border-radius: 2px;
   opacity: 0.5;
 `;
 
 export const PercentageTag = styled.p`
-  background-color: #f2e7fe;
+  background-color: ${(props) => (props.isVol ? "#D9E6FF" : "#f2e7fe")};
   color: #404040;
   font-size: 10px;
   font-weight: 600;

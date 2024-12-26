@@ -16,6 +16,29 @@ export const dummyData = [
     unit: "lbs",
     order: 40,
     quantity: 33,
+    shipmentDetails: [
+      {
+        name: "American Cleaning Supply",
+        address: "Laredo, TX 78045, USA",
+      },
+      {
+        name: "3M Co.",
+        address: "Roanoke, TX 76262, USA",
+      },
+      {
+        name: "Aliance Sports Group",
+        address: "Roanoke, TX 76262, USA",
+      },
+    ],
+    shipmentDestination: {
+      name: "Ace Maumelle RSC",
+      address: "Maumelle, Arkansas 72113, USA",
+    },
+    deliverPoints: {
+      startPoint: [44.9778, -93.265], // Denver, CO
+      pickupPoint: [41.2565, -95.9345], // St. Louis, MO
+      destinationPoint: [39.7392, -104.9903], // San Francisco, CA
+    },
   },
 
   {
@@ -35,6 +58,29 @@ export const dummyData = [
     unit: "lbs",
     order: 40,
     quantity: 33,
+    shipmentDetails: [
+      {
+        name: "American Cleaning Supply",
+        address: "Laredo, TX 78045, USA",
+      },
+      {
+        name: "3M Co.",
+        address: "Roanoke, TX 76262, USA",
+      },
+      {
+        name: "Aliance Sports Group",
+        address: "Roanoke, TX 76262, USA",
+      },
+    ],
+    shipmentDestination: {
+      name: "Ace Maumelle RSC",
+      address: "Maumelle, Arkansas 72113, USA",
+    },
+    deliverPoints: {
+      startPoint: [44.9778, -93.265], // Denver, CO
+      pickupPoint: [41.2565, -95.9345], // St. Louis, MO
+      destinationPoint: [39.7392, -104.9903], // San Francisco, CA
+    },
   },
   {
     id: 3,
@@ -53,6 +99,29 @@ export const dummyData = [
     unit: "cft",
     order: 40,
     quantity: 33,
+    shipmentDetails: [
+      {
+        name: "American Cleaning Supply",
+        address: "Laredo, TX 78045, USA",
+      },
+      {
+        name: "3M Co.",
+        address: "Roanoke, TX 76262, USA",
+      },
+      {
+        name: "Aliance Sports Group",
+        address: "Roanoke, TX 76262, USA",
+      },
+    ],
+    shipmentDestination: {
+      name: "Ace Maumelle RSC",
+      address: "Maumelle, Arkansas 72113, USA",
+    },
+    deliverPoints: {
+      startPoint: [44.9778, -93.265], // Denver, CO
+      pickupPoint: [41.2565, -95.9345], // St. Louis, MO
+      destinationPoint: [39.7392, -104.9903], // San Francisco, CA
+    },
   },
   {
     id: 4,
@@ -71,6 +140,29 @@ export const dummyData = [
     unit: "lbs",
     order: 40,
     quantity: 33,
+    shipmentDetails: [
+      {
+        name: "American Cleaning Supply",
+        address: "Laredo, TX 78045, USA",
+      },
+      {
+        name: "3M Co.",
+        address: "Roanoke, TX 76262, USA",
+      },
+      {
+        name: "Aliance Sports Group",
+        address: "Roanoke, TX 76262, USA",
+      },
+    ],
+    shipmentDestination: {
+      name: "Ace Maumelle RSC",
+      address: "Maumelle, Arkansas 72113, USA",
+    },
+    deliverPoints: {
+      startPoint: [44.9778, -93.265], // Denver, CO
+      pickupPoint: [41.2565, -95.9345], // St. Louis, MO
+      destinationPoint: [39.7392, -104.9903], // San Francisco, CA
+    },
   },
   {
     id: 5,
@@ -83,12 +175,35 @@ export const dummyData = [
     },
     carrier: { name: "Monore Transport", type: "Private fleet" },
     max: 90,
-    maxType: "WT",
+    maxType: "Vol",
     vehicle: "53 Ft Trailer",
     weight: 1200,
     unit: "cft",
     order: 40,
     quantity: 33,
+    shipmentDetails: [
+      {
+        name: "American Cleaning Supply",
+        address: "Laredo, TX 78045, USA",
+      },
+      {
+        name: "3M Co.",
+        address: "Roanoke, TX 76262, USA",
+      },
+      {
+        name: "Aliance Sports Group",
+        address: "Roanoke, TX 76262, USA",
+      },
+    ],
+    shipmentDestination: {
+      name: "Ace Maumelle RSC",
+      address: "Maumelle, Arkansas 72113, USA",
+    },
+    deliverPoints: {
+      startPoint: [44.9778, -93.265], // Denver, CO
+      pickupPoint: [41.2565, -95.9345], // St. Louis, MO
+      destinationPoint: [39.7392, -104.9903], // San Francisco, CA
+    },
   },
   {
     id: 6,
@@ -107,5 +222,30 @@ export const dummyData = [
     unit: "lbs",
     order: 40,
     quantity: 33,
+    shipmentDetails: [
+      {
+        name: "American Cleaning Supply",
+        address: "Laredo, TX 78045, USA",
+      },
+      {
+        name: "3M Co.",
+        address: "Roanoke, TX 76262, USA",
+      },
+      {
+        name: "Aliance Sports Group",
+        address: "Roanoke, TX 76262, USA",
+      },
+    ],
+    shipmentDestination: {
+      name: "Ace Maumelle RSC",
+      address: "Maumelle, Arkansas 72113, USA",
+    },
+    deliverPoints: {
+      startPoint: [44.9778, -93.265], // Denver, CO
+      pickupPoint: [41.2565, -95.9345], // St. Louis, MO
+      destinationPoint: [39.7392, -104.9903], // San Francisco, CA
+    },
   },
 ];
+
+export const tabData = ["MAP", "DETAILS", "RATE"];
