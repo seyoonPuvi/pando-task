@@ -12,67 +12,110 @@ import {
 import { IoMdClose } from "react-icons/io";
 
 const ShipmentContainer = styled.div`
-  width: 40%;
-  height: 100%;
+  width: 404px;
+  height: 700px;
   background-color: white;
-  padding: 2rem 1rem;
+  margin-top: 13px;
 `;
 
 export const ShipmentHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
+  width: 100%;
+  height: 54px;
+  min-height: 48px;
+  padding: 12px 15px 12px 15px;
+  gap: 10px;
 `;
 
 export const Heading = styled.h2`
+  color: #005399;
+  width: 227px;
+  height: 16px;
+  //styleName: 14px/Semi-Bold/Normal;
+  font-family: Open Sans;
   font-size: 14px;
   font-weight: 600;
-  color: #005399;
-  letter-spacing: 1px;
+  line-height: 16px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 `;
 
 const ButtonContainer = styled.div`
-  width: 137px;
+  min-width: 137px;
   height: 30px;
   display: flex;
   align-items: center;
-  column-gap: 5px;
+  gap: 10px;
+  //styleName: 14px/Semi-Bold/Normal;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 `;
 
-const ButtonText = styled.span`
-  padding: 0.5rem;
-  border-radius: 2px;
+const ButtonText = styled.button`
+  min-width: 113px;
+  height: 24px;
+  padding: 5px 10px 5px 10px;
+
+  border-radius: 4px;
+
   background-color: #eef2f4;
-  color: #005399;
+  color: #0076dd;
+  //styleName: Button/Small-Bold;
+  font-family: Open Sans;
   font-size: 10px;
   font-weight: 700;
+  line-height: 14px;
+
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 `;
 
 const CloseButton = styled.button`
   background-color: transparent;
   font-size: 14px;
+  width: 14px;
+  height: 30px;
+
+  border-radius: 4px;
 `;
 
 const TabContainer = styled.div`
-  margin-top: 2rem;
   width: 100%;
+  height: 34px;
+  padding: 0px 15px 10px 15px;
   display: flex;
   align-items: center;
-  column-gap: 1.5rem;
+  gap: 10px;
 `;
 
 const Tab = styled.button`
   background-color: ${(props) => (props.isActive ? "#005399" : "white")};
-  border-radius: 14px;
+
   color: ${(props) => (props.isActive ? "white" : "#005399")};
-  padding: 5px 10px;
-  font-weight: 500;
+
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  min-width: 43px;
+  height: 24px;
+  padding: 5px 10px 5px 10px;
+
+  border-radius: 20px;
+  font-family: Open Sans;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
 `;
 
 const CloseIcon = styled(IoMdClose)`
-  font-size: 2rem;
-  padding-top: 5px;
+  font-size: 2.4rem;
 `;
 
 const Shipment = () => {

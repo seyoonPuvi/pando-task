@@ -1,41 +1,59 @@
 import React from "react";
-import {
-  List,
-  SubList,
-  DeliveryIconContainer,
-  DeliveryIcon,
-  Number,
-  TextContainer,
-  PickupDropContainer,
-  LineImage,
-  HoverContainer,
-  RectangleBox,
-  PickUpContainer,
-  SubText,
-  Text,
-  Text2,
-  PercentageContainer,
-  Percentage,
-  PercentageBar,
-  PercentageIndicator,
-  PercentageTag,
-  VehicleText,
-  WQContainer,
-  WeightContainer,
-  Weight,
-  Unit,
-  OrderName,
-  QuantityContainer,
-  MaterialIconContainer,
-  MaterialImage,
-  MaterialName,
-} from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import {
   closeShipment,
   selectShipment,
 } from "../../utils/store/shipmentViewSlice";
-import { Checkbox } from "../DisplaySection";
+import {
+  onRenderMaterialIcon,
+  onRenderRectangle,
+  TruckIcon,
+} from "../../utils/constant";
+import {
+  OutputListCard,
+  LeftContainer,
+  RightContainer,
+  SelectionContainer,
+  CheckboxContainer,
+  Checkbox,
+  NumberCol,
+  Number,
+  SourceDestination,
+  SourceCont,
+  Source,
+  SourceDetails,
+  DottedLine,
+  CrossDoc,
+  Tag,
+  TotalDropsContainer,
+  RouteContainer,
+  DestinationCont,
+  CarrierContainer,
+  VehicleTypeCont,
+  StatsCont,
+  WTCont,
+  WtText,
+  ProgressBar,
+  Progress,
+  UnitTagCont,
+  UnitTag,
+  MaxText,
+  DivideLine,
+  TotalAndQtyContainer,
+  TotalContainer,
+  TotalWeight,
+  Weight,
+  WeightMetrics,
+  Order,
+  OrderTag,
+  OrderNos,
+  QtyContainer,
+  QtyInfo,
+  Qty,
+  MaterialText,
+  Xdoc,
+} from "./style";
+
 const ListItem = ({ data, index }) => {
   const showShipment = useSelector((store) => store.shipmentView.showShipment);
   const dispatch = useDispatch();
@@ -50,103 +68,110 @@ const ListItem = ({ data, index }) => {
       dispatch(selectShipment(data));
     }
   };
-  return (
-    <List onClick={() => onClickShipmentList(data.id)}>
-      <SubList width={showShipment ? "10%" : "5%"}>
-        <DeliveryIconContainer>
-          {!isListSelected ? <DeliveryIcon /> : <input type="checkbox" />}
-        </DeliveryIconContainer>
-        <Number>{index + 1}</Number>
-      </SubList>
-      <SubList width={showShipment ? "15%" : "25%"}>
-        <TextContainer>
-          <Text>{data.origin.name}</Text>
-          <SubText>
-            {data.origin.state} , {`<Pincode>`}
-          </SubText>
-        </TextContainer>
-        {!showShipment && (
-          <PickupDropContainer>
-            <HoverContainer>
-              <RectangleBox color="#d26568" />
-              <LineImage
-                src="https://i.postimg.cc/jjmZBR1R/Line-150.png"
-                alt=""
-              />
-              <RectangleBox color="#1FCD93" />
-            </HoverContainer>
-            <PickUpContainer>
-              <Text2>{`1 pickup(s)`}</Text2>
-              <Text2>{`2 drop(s)`}</Text2>
-            </PickUpContainer>
-          </PickupDropContainer>
-        )}
-      </SubList>
-      <SubList width={showShipment ? "15%" : "10%"}>
-        <TextContainer>
-          <Text>{data.destination.name}</Text>
-          <SubText>
-            {data.destination.state},{`<Pincode>`}
-          </SubText>
-        </TextContainer>
-      </SubList>
-      <SubList width={showShipment ? "15%" : "10%"}>
-        <TextContainer>
-          <Text>
-            {data.carrier.name.length > 15
-              ? data.carrier.name.slice(0, 16) + "..."
-              : data.carrier.name}
-          </Text>
-          <SubText>{data.carrier.type}</SubText>
-        </TextContainer>
-      </SubList>
-      <SubList width={showShipment ? "35%" : "20%"}>
-        <TextContainer>
-          <PercentageContainer>
-            <Percentage>{data.max} % </Percentage>
-            <PercentageBar>
-              <PercentageIndicator
-                width={`${data.max}%`}
-                isVol={data.maxType === "Vol"}
-              />
-            </PercentageBar>
-            <PercentageTag isVol={data.maxType === "Vol"}>
-              {data.maxType}
-            </PercentageTag>
-          </PercentageContainer>
-          <VehicleText>{data.vehicle}</VehicleText>
-        </TextContainer>
-      </SubList>
+
+  const onRenderSourceDestinationContainer = () => (
+    <SourceDestination showShipment={showShipment}>
+      <SourceCont>
+        <Source>{data.origin.name}</Source>
+        <SourceDetails>TX, {"<Pincode>"}</SourceDetails>
+      </SourceCont>
       {!showShipment && (
-        <SubList width="20%">
-          <WQContainer>
-            <WeightContainer>
-              <Weight>
-                {data.weight} <Unit> {data.unit}</Unit>
-              </Weight>
-              <Weight>
-                <OrderName>Order </OrderName> {data.order}
-              </Weight>
-            </WeightContainer>
-            <QuantityContainer>
-              <Weight>
-                <OrderName>Qty </OrderName> {data.quantity} <Unit>pcs</Unit>
-              </Weight>
-              <Weight>
-                {" "}
-                2 <Unit>Pallets</Unit>
-              </Weight>
-            </QuantityContainer>
-          </WQContainer>
-        </SubList>
+        <RouteContainer>
+          <CrossDoc>
+            {data.xdocLeft ? <Xdoc>X-doc</Xdoc> : onRenderRectangle("#D26568")}
+            <DottedLine />
+            {data.xdocRight ? <Xdoc>X-doc</Xdoc> : onRenderRectangle("#1FCD93")}
+          </CrossDoc>
+          <TotalDropsContainer>
+            <Tag>1 pickup{"(s)"}</Tag>
+            <Tag>2 drop{"(s)"}</Tag>
+          </TotalDropsContainer>
+        </RouteContainer>
       )}
-      <SubList width="10%">
-        <MaterialIconContainer>
-          <MaterialImage src="https://i.postimg.cc/66SGp5Rn/Mask.png" alt="" />
-          {!showShipment && <MaterialName>MATERIAL</MaterialName>}
-        </MaterialIconContainer>
-      </SubList>
-    </List>
+      <DestinationCont>
+        <Source>Grand Prairie</Source>
+        <SourceDetails>TX, {"<Pincode>"}</SourceDetails>
+      </DestinationCont>
+    </SourceDestination>
+  );
+
+  const onRenderVehicleStatsContainer = () => (
+    <VehicleTypeCont>
+      <StatsCont>
+        <WTCont>
+          <WtText>{data.max} %</WtText>
+          <ProgressBar>
+            <Progress progress={`${data.max}%`} unit={data.maxType} />
+          </ProgressBar>
+          <UnitTagCont unit={data.maxType}>
+            <UnitTag>{data.maxType}</UnitTag>
+          </UnitTagCont>
+        </WTCont>
+      </StatsCont>
+      <MaxText>{data.vehicle}</MaxText>
+    </VehicleTypeCont>
+  );
+
+  const onRenderWtAndQtyContainer = () => (
+    <TotalAndQtyContainer>
+      <TotalContainer>
+        <TotalWeight>
+          <Weight>{data.weight}</Weight>
+          <WeightMetrics>{data.unit}</WeightMetrics>
+        </TotalWeight>
+        <Order>
+          <OrderTag>Order</OrderTag>
+          <OrderNos>{data.order}</OrderNos>
+        </Order>
+      </TotalContainer>
+      <QtyContainer>
+        <QtyInfo>
+          <Qty>Qty</Qty>
+          <Weight>{data.quantity}</Weight>
+          <WeightMetrics>Pcs</WeightMetrics>
+        </QtyInfo>
+        <TotalWeight>
+          <Weight>2</Weight>
+          <WeightMetrics>Pallets</WeightMetrics>
+        </TotalWeight>
+      </QtyContainer>
+    </TotalAndQtyContainer>
+  );
+
+  return (
+    <OutputListCard
+      onClick={() => {
+        onClickShipmentList(data.id);
+      }}
+    >
+      <LeftContainer>
+        <SelectionContainer>
+          <CheckboxContainer showShipment>
+            {isListSelected ? <Checkbox type="checkbox" /> : <TruckIcon />}
+          </CheckboxContainer>
+        </SelectionContainer>
+        <NumberCol>
+          <Number>{index + 1}</Number>
+        </NumberCol>
+        {onRenderSourceDestinationContainer()}
+        <CarrierContainer>
+          <Source>
+            {data.carrier.name.length > 16
+              ? `${data.carrier.name.slice(0, 16)}...`
+              : data.carrier.name}
+          </Source>
+          <SourceDetails>{data.carrier.type}</SourceDetails>
+        </CarrierContainer>
+        {onRenderVehicleStatsContainer()}
+
+        <DivideLine />
+        {!showShipment && onRenderWtAndQtyContainer()}
+      </LeftContainer>
+      <RightContainer showShipment>
+        {onRenderMaterialIcon()}
+        {!showShipment && <MaterialText>Materials</MaterialText>}
+      </RightContainer>
+    </OutputListCard>
   );
 };
 

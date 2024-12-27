@@ -11,6 +11,7 @@ body,
   margin: 0;
   padding: 0;
   font-family: Open Sans;
+  box-sizing: border-box;
 }
 
 button {
@@ -28,9 +29,4 @@ li {
 
 ul {
   padding-inline-start: 0;
-}
-
-.des-dummy-cont {
-  width: 20px;
-  height: 122px;
 }

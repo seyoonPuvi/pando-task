@@ -3,43 +3,67 @@ import { BiDownArrowAlt } from "react-icons/bi";
 import { CiViewColumn } from "react-icons/ci";
 import styled from "styled-components";
 import ListItem from "./ListItem/ListItem";
-import { ListItemContainer } from "./ListItem/style";
 import { dummyData } from "../utils/constant";
 import { useSelector } from "react-redux";
-import Shipment from "./shipment/Shipment";
+
+const DownArrowIcon = styled(BiDownArrowAlt)`
+  color: #005399;
+  font-size: 1.2rem;
+`;
+
+const ColumnIcon = styled(CiViewColumn)`
+  font-size: 1.4rem;
+  color: #005399;
+`;
 
 const DisplayContainer = styled.div`
-  min-height: 65rem;
+  width: ${(props) => (props.showShipment ? "986px" : "1380px")};
+  height: ${(props) => (props.showShipment ? "700px" : "657px")};
   display: flex;
+  flex-direction: column;
+  padding: 15px 15px 0px 15px;
+  gap: 10px;
   background-color: #f3f6fc;
-  width: 100%;
+  margin-top: 13px;
+  transition: width 0.3s ease-out;
 `;
-
-const DisplayMainContainer = styled.div`
-  overflow-y: auto;
-  padding: 2rem;
+const PlannedHeader = styled.div`
   width: 100%;
-`;
-
-const SectionTitleContainer = styled.div`
+  height: 24px;
   display: flex;
   align-items: center;
-  column-gap: 2rem;
+  justify-content: space-between;
 `;
 
-const SectionTitle = styled.p`
+const PlannedHeaderLeftCont = styled.div`
+  height: 19px;
+  width: 176px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+const PlannedText = styled.p`
+  width: 72px;
+  height: 19px;
   font-family: Open Sans;
   font-size: 14px;
   font-weight: 600;
   line-height: 19.07px;
   letter-spacing: 1px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: #005399;
 `;
+const IndicatorTag = styled.div`
+  width: 94px;
+  height: 15px;
+  padding: 0.5px 2px 0.5px 2px;
+  background-color: #bdf0f4;
+  border-radius: 2px;
+`;
 
-const SectionHignlightTitle = styled.span`
+const IndicatorTagText = styled.p`
+  height: 14px;
+  //styleName: 10px/Semibold/Normal;
   font-family: Open Sans;
   font-size: 10px;
   font-weight: 600;
@@ -48,132 +72,119 @@ const SectionHignlightTitle = styled.span`
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: #404040;
-  background-color: #bdf0f4;
+`;
 
-  padding: 0.8px 2px 0.8px 2px;
+const THUPannel = styled.div`
+  width: 100%;
+  height: 608px;
+  padding: 10px 0px 10px 0px;
+`;
+
+const THUPannelHeader = styled.div`
+  width: 100%;
+  height: 34px;
+  display: flex;
+  align-items: center;
   gap: 10px;
-  border-radius: 2px 0px 0px 0px;
-  height: 15px;
-  width: 94px;
 `;
 
-const SectionListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-  width: 100%;
-`;
-
-export const ListTitleContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-export const ListTitle = styled.div`
-  display: flex;
-  align-items: center;
+const TableCell = styled.div`
   width: ${(props) => props.width};
   height: 34px;
-  border: 1px 0px 0px 0px;
-  padding: 1rem 1.2rem;
-`;
-const CheckboxContainer = styled.div`
+  padding: ${(props) =>
+    props.firstcol ? "10px 8px 10px 22px" : "10px 8px 10px 8px"};
   display: flex;
   align-items: center;
-  column-gap: 3rem;
+  gap: 30px;
+  border: 1px 0px 0px 0px;
 `;
-export const Checkbox = styled.input`
+
+const Checkbox = styled.input`
   width: 14px;
   height: 14px;
-
-  margin-left: ${(props) => (props.showShipment ? "1.2rem" : "0")};
-
-  @media (min-width: 1300px) {
-    margin-left: 1.2rem;
-  }
 `;
-
-const CheckBoxTitle = styled.p`
-  font-family: Open Sans;
-  font-size: 10px;
-  font-weight: 600;
-
-  letter-spacing: 0.5px;
-
-  color: #005399;
+const THUTextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
 `;
-const ListHeading = styled.p`
+const THUHeaderText = styled.p`
+  width: ${(props) => props.width};
+  height: 14px;
+  //styleName: 10px/Semibold/AllCaps-Sp0.5px;
   font-family: Open Sans;
   font-size: 10px;
   font-weight: 600;
   line-height: 13.62px;
   letter-spacing: 0.5px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: #005399;
 `;
 
-const DownArrowIcon = styled(BiDownArrowAlt)`
-  color: #005399;
-  font-size: 1.2rem;
+const THUListItemContainer = styled.div`
+  width: 100%;
+  height: 554px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
-const ColumnIcon = styled(CiViewColumn)`
-  font-size: 2rem;
-  color: #005399;
-  margin-left: auto;
-`;
 const DisplaySection = () => {
   const showShipment = useSelector((store) => store.shipmentView.showShipment);
+
+  const onRenderTHUpannelHeader = () => (
+    <THUPannelHeader>
+      <TableCell width="110px" firstcol>
+        <Checkbox type="checkbox" />
+        <THUHeaderText width="29px">S.NO.</THUHeaderText>
+      </TableCell>
+      <TableCell width={showShipment ? "138px" : "254px"}>
+        <THUTextContainer>
+          <THUHeaderText width="29px">ORIGIN</THUHeaderText>
+          <DownArrowIcon />
+        </THUTextContainer>
+      </TableCell>
+      <TableCell width="160px">
+        <THUTextContainer>
+          <THUHeaderText width="71px">DESTINATION</THUHeaderText>
+          <DownArrowIcon />
+        </THUTextContainer>
+      </TableCell>
+      <TableCell width="170px">
+        <THUHeaderText width="82px">Carrier | Type</THUHeaderText>
+      </TableCell>
+      <TableCell width={showShipment ? "314px" : "200px"}>
+        <THUHeaderText width="149px">Max Utilisation | Vehicle</THUHeaderText>
+      </TableCell>
+      {!showShipment && (
+        <TableCell width="382px">
+          <THUTextContainer>
+            <THUHeaderText width="121px">Total | Weight | Qty</THUHeaderText>
+            <DownArrowIcon />
+          </THUTextContainer>
+        </TableCell>
+      )}
+      <ColumnIcon />
+    </THUPannelHeader>
+  );
   return (
-    <DisplayContainer>
-      <DisplayMainContainer>
-        <SectionTitleContainer>
-          <SectionTitle>PLANNED</SectionTitle>
-          <SectionHignlightTitle>Optima Generated</SectionHignlightTitle>
-        </SectionTitleContainer>
-        <SectionListContainer>
-          <ListTitleContainer>
-            <ListTitle width={showShipment ? "10%" : "5%"}>
-              <CheckboxContainer>
-                <Checkbox type="checkbox" showShipment={showShipment} />
-                <CheckBoxTitle>S.NO</CheckBoxTitle>
-              </CheckboxContainer>
-            </ListTitle>
-            <ListTitle width={showShipment ? "15%" : "25%"}>
-              <ListHeading>ORIGIN</ListHeading>
-              <DownArrowIcon />
-            </ListTitle>
-            <ListTitle width={showShipment ? "15%" : "10%"}>
-              <ListHeading>DESTINATION</ListHeading>
-              <DownArrowIcon />
-            </ListTitle>
-            <ListTitle width={showShipment ? "15%" : "10%"}>
-              <ListHeading>CARRIER | TYPE</ListHeading>
-            </ListTitle>
-            <ListTitle width={showShipment ? "35%" : "20%"}>
-              <ListHeading>MAX UTILISATION | VEHICLE</ListHeading>
-            </ListTitle>
-            {!showShipment && (
-              <ListTitle width="20%">
-                <ListHeading>TOTAL | WEIGHT | QTY</ListHeading>
-                <DownArrowIcon />
-              </ListTitle>
-            )}
-            <ListTitle width="10%">
-              <ColumnIcon />
-            </ListTitle>
-          </ListTitleContainer>
-          <ListItemContainer>
-            {dummyData.map((each, index) => (
-              <ListItem data={each} key={each.id} index={index} />
-            ))}
-          </ListItemContainer>
-        </SectionListContainer>
-      </DisplayMainContainer>
-      {showShipment && <Shipment />}
+    <DisplayContainer showShipment={showShipment}>
+      <PlannedHeader>
+        <PlannedHeaderLeftCont>
+          <PlannedText>PLANNED</PlannedText>
+          <IndicatorTag>
+            <IndicatorTagText>Optima Generated</IndicatorTagText>
+          </IndicatorTag>
+        </PlannedHeaderLeftCont>
+      </PlannedHeader>
+      <THUPannel>
+        {onRenderTHUpannelHeader()}
+        <THUListItemContainer>
+          {dummyData.map((each, index) => (
+            <ListItem key={index} data={each} index={index} />
+          ))}
+        </THUListItemContainer>
+      </THUPannel>
     </DisplayContainer>
   );
 };

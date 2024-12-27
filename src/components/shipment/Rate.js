@@ -6,18 +6,19 @@ const RateContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
+  padding: 1rem 2rem;
 `;
 
 const RateHeading = styled.p`
   color: #404040;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 12px;
 `;
 
 const Amount = styled.span`
   color: #1fcd93;
-  font-weight: 800;
-  font-size: 12px;
+  font-weight: 500;
+  font-size: 10px;
 `;
 
 const SubRateContainer = styled.div`

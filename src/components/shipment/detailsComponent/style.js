@@ -9,29 +9,57 @@ export const DetailsContainer = styled.div`
 export const WeightInfoCard = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-  border-radius: 8px;
-  padding: 1rem 2rem;
+  width: 384px;
+  height: 70px;
+  padding: 1rem 0;
+  gap: 10px;
+  border-radius: 4px;
+
   background-color: #eef2f4;
-  margin-top: 3rem;
+  margin: auto;
 `;
 
 export const NameAndDistCont = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  height: 16px;
+  padding: 0px 15px 0px 15px;
+  gap: 5px;
+  opacity: 0px;
+`;
+
+export const WtAndVolCont = styled.div`
+  width: 354px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
 `;
 
 export const Name = styled.p`
-  color: #404040;
+  font-family: Open Sans;
   font-size: 12px;
   font-weight: 600;
+  line-height: 16.34px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #404040;
 `;
 
 export const SubHeading = styled.span`
   color: #404040;
+
+  font-family: Open Sans;
   font-size: 12px;
   font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 `;
 
 export const WeightHeading = styled.span`
@@ -53,7 +81,16 @@ export const ShipmentPlanContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
+export const ShipmentHeader = styled.div`
+  width: 374px;
+  height: 46px;
+  padding: 15px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: auto;
+`;
 export const ExpandButton = styled.button`
   color: #005399;
   font-size: 10px;
@@ -77,6 +114,10 @@ export const LocationInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+  width: 400px;
+  height: 42px;
+  padding: 0px 20px 0px 10px;
+  gap: 8px;
 `;
 
 export const LocationContainer = styled.div`
@@ -89,7 +130,7 @@ export const ArrowContainer = styled.div`
 `;
 
 export const ArrowImage = styled.img`
-  height: 16px;
+  height: 18px;
   width: 16px;
   object-fit: cover;
   object-position: center;
@@ -97,11 +138,10 @@ export const ArrowImage = styled.img`
 `;
 
 export const DotLineImage = styled.img`
-  height: 14px;
-  width: 5px;
-  object-fit: cover;
-  object-position: center;
-  padding-left: 0.6rem;
+  width: 1px;
+  height: 25px;
+  margin: auto;
+  border: 1px dashed #b5c3cb;
 `;
 
 export const LocationDetails = styled.div`
@@ -121,7 +161,10 @@ export const Place = styled(GroupName)`
 `;
 export const ExpandContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 400px;
+  min-height: 42px;
+  padding: 0px 20px 0px 8px;
+  gap: 8px;
 `;
 
 export const ExpandInfoCard = styled(WeightInfoCard)`
@@ -129,6 +172,8 @@ export const ExpandInfoCard = styled(WeightInfoCard)`
   flex-grow: 1;
   align-self: center;
   transition: all 0.35s ease-out;
+  flex-direction: column;
+  gap: 20px 10px;
 `;
 
 export const WeightInfo = styled.div`

@@ -1,155 +1,192 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { IoIosArrowDown, IoMdClose } from "react-icons/io";
+import { CiFilter } from "react-icons/ci";
 
 const FilterHeaderContainer = styled.div`
-  padding: 0.5rem 2rem;
+  width: 1440px;
+  height: 40px;
   background-color: #e9f1f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const FHMainContainer = styled.div`
+  width: 1400px;
+  height: 24px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-const FHLeftContainer = styled.div`
+const LeftContainer = styled.div`
+  min-width: 283px;
+  height: 24px;
   display: flex;
   align-items: center;
-  column-gap: 5px;
+  gap: 20px;
 `;
 
-const DropDownContainer = styled.div`
-  width: Hug (239px) px;
-  height: Hug (16px) px;
-  opacity: 0px;
+const SelectionDropdown = styled.div`
+  min-width: 239px;
+  height: 16px;
   display: flex;
   align-items: center;
-  column-gap: 5px;
+  gap: 5px;
 `;
 
-const FilterTitle = styled.p`
+const SelectionLabel = styled.p`
+  width: 80px;
+  height: 16px;
   font-family: Open Sans;
   font-size: 11px;
   font-weight: 400;
   line-height: 16px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
+  color: #616161;
+`;
+const SelectionLabel2 = styled.p`
+  width: 3px;
+  height: 16px;
+  font-family: Open Sans;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
   color: #616161;
 `;
 
-const FilterDropDown = styled.select`
-  outline: none;
-  border: none;
-  background-color: transparent;
-  font-family: Open Sans;
-  font-size: 14px;
-  font-weight: 600;
-  color: #18283b;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  background-image: url("https://i.postimg.cc/9QhZ0wGK/Dropdown-arrow.png");
-  background-repeat: no-repeat;
-
-  /* Adjust the position of the arrow */
-  background-position: calc(100% - 15px) center;
-  background-size: 10px;
-
-  padding-right: 30px;
-  cursor: pointer;
-`;
-
-const FilterOption = styled.option`
+const SelectionLabel3 = styled.p`
+  width: 131px;
+  height: 10px;
+  min-width: 90px;
   font-family: Open Sans;
   font-size: 14px;
   font-weight: 600;
   line-height: 10px;
   text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: #18283b;
-  padding: 0 5px;
 `;
 
-const FilterButton = styled.button`
-  width: Fixed (24px) px;
-  height: Fixed (24px) px;
-  padding: 5px;
-  border-radius: 2px 0px 0px 0px;
-  opacity: 0px;
+const DownNavBtn = styled(IoIosArrowDown)`
+  font-size: 11px;
+  color: #a3a3a380;
+`;
+
+const MoreFiterCont = styled.div`
+  width: 24px;
+  height: 24px;
   background-color: white;
-  cursor: pointer;
-`;
-
-const FilterIcon = styled.img`
-  height: 1rem;
-  width: 1rem;
-  object-fit: contain;
-  object-position: center;
-`;
-
-const LabelButtonContainer = styled.div`
+  border-radius: 2px;
   display: flex;
   align-items: center;
-  column-gap: 2rem;
-
-  border-left: 0.5px solid #616161;
-  padding-left: 1rem;
-  margin-right: 2rem;
+  justify-content: center;
 `;
-const LabelCont = styled.div`
+
+const FilterIcon = styled(CiFilter)`
+  font-size: 18px;
+  color: #234357;
+  font-weight: bold;
+  transition: all 0.3s ease;
+`;
+
+const LabelSelectCont = styled.div`
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+`;
+
+const Line = styled.div`
+  height: 100%;
+  width: 1px;
+  border: 1px solid #616161;
+`;
+
+const LabelSelect = styled.div`
+  height: 100%;
   background-color: white;
-  border-radius: 16px;
-  color: #616161;
-  padding: 1rem;
-`;
-
-const LabelButton = styled.button`
-  padding: 0.5rem;
-  border-radius: 2px;
-  color: #616161;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
+  padding: 10px;
 `;
 
+const Label = styled.p`
+  font-family: Open Sans;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+  color: #616161;
+`;
+
+const LabelDropDown = styled(DownNavBtn)`
+  color: #616161;
+  font-size: 16px;
+`;
+
+const CloseIconCont = styled.button`
+  background-color: white;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+`;
+
+const CloseIcon = styled(IoMdClose)`
+  font-size: 20px;
+  color: #616161;
+  font-weight: 700;
+`;
 const FilterHeader = () => {
   const [showFilter, ToggleFilter] = useState(false);
   return (
     <FilterHeaderContainer>
       <FHMainContainer>
-        <FHLeftContainer>
-          <DropDownContainer>
-            <FilterTitle>Planning Group :</FilterTitle>
-            <FilterDropDown>
-              <FilterOption>Arizona Zone Retail</FilterOption>
-            </FilterDropDown>
-          </DropDownContainer>
+        <LeftContainer>
+          <SelectionDropdown>
+            <SelectionLabel>Planning Group</SelectionLabel>
+            <SelectionLabel2>:</SelectionLabel2>
+            <SelectionLabel3>Arizona Zone Retail</SelectionLabel3>
+            <DownNavBtn />
+          </SelectionDropdown>
+          {!showFilter && (
+            <MoreFiterCont
+              onClick={() => {
+                ToggleFilter(true);
+              }}
+            >
+              <FilterIcon />
+            </MoreFiterCont>
+          )}
           {showFilter && (
-            <LabelButtonContainer>
-              <LabelCont>Label : Select V</LabelCont>
-              <LabelButton
+            <LabelSelectCont>
+              <Line />
+              <LabelSelect>
+                <Label>Label</Label>
+                <Label>:</Label>
+                <Label>Select</Label>
+                <LabelDropDown />
+              </LabelSelect>
+              <CloseIconCont
                 type="button"
                 onClick={() => {
                   ToggleFilter(false);
                 }}
               >
-                X
-              </LabelButton>
-            </LabelButtonContainer>
+                <CloseIcon />
+              </CloseIconCont>
+            </LabelSelectCont>
           )}
-          <FilterButton
-            type="button"
-            onClick={() => {
-              ToggleFilter(!showFilter);
-            }}
-          >
-            <FilterIcon
-              src="https://i.postimg.cc/YSNbyxbr/Mask.png"
-              alt="filter-icon"
-            />
-          </FilterButton>
-        </FHLeftContainer>
+        </LeftContainer>
       </FHMainContainer>
     </FilterHeaderContainer>
   );

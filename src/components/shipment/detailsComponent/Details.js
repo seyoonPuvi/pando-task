@@ -1,8 +1,9 @@
 import React from "react";
 import ExpandableLineSvg from "../ExpandableLineSvg";
-import { Heading, ShipmentHeader } from "../Shipment";
+import { Heading } from "../Shipment";
 import {
   DetailsContainer,
+  WtAndVolCont,
   WeightInfoCard,
   NameAndDistCont,
   Name,
@@ -16,6 +17,7 @@ import {
   DotLineImage,
   LocationDetails,
   GroupName,
+  ShipmentHeader,
   Place,
   ExpandContainer,
   ExpandInfoCard,
@@ -51,14 +53,14 @@ const Details = () => {
           <SubHeading>Total Distance : </SubHeading>300 mi
         </Name>
       </NameAndDistCont>
-      <NameAndDistCont>
+      <WtAndVolCont>
         <Weight>
           <WeightHeading>Total Wt</WeightHeading> 2500 lbs
         </Weight>
         <Weight>
           <WeightHeading>Total Vol</WeightHeading> 1200 cft
         </Weight>
-      </NameAndDistCont>
+      </WtAndVolCont>
     </WeightInfoCard>
   );
 
@@ -72,17 +74,11 @@ const Details = () => {
                 src="https://i.postimg.cc/ydHD8LZb/Dot.png"
                 alt="Arrow"
               />
-              <DotLineImage
-                src="https://i.postimg.cc/5ytNXTNn/Frame-2991.png"
-                alt="Dot Line"
-              />
+              <DotLineImage />
             </>
           ) : (
             <>
-              <DotLineImage
-                src="https://i.postimg.cc/5ytNXTNn/Frame-2991.png"
-                alt="Dot Line Destination"
-              />
+              <DotLineImage />
               <ArrowImage
                 src="https://i.postimg.cc/xqDQrCJW/Dot-1.png"
                 alt="Arrow"
@@ -101,7 +97,6 @@ const Details = () => {
   const onRenderExpandContainer = (showDestination) => (
     <ExpandContainer>
       {!showDestination && <ExpandableLineSvg />}
-      {showDestination && <div className="des-dummy-cont"></div>}
       {isExpanded && (
         <ExpandInfoCard>
           <NameAndDistCont>
@@ -112,17 +107,17 @@ const Details = () => {
               </WeightSubHeading>
             </WeightInfo>
             <WeightInfo>
-              <WeightHeading>Wt</WeightHeading>
+              <WeightHeading>Vol.</WeightHeading>
               <WeightSubHeading>
-                1978.75 <Unit>lbs</Unit>
+                127.38 <Unit>cft</Unit>
               </WeightSubHeading>
             </WeightInfo>
           </NameAndDistCont>
           <NameAndDistCont>
             <WeightInfo>
-              <QtyHeading>Wt</QtyHeading>
+              <QtyHeading>Qty</QtyHeading>
               <QtySubHeading>
-                1978.75 <Unit>lbs</Unit>
+                179 <Unit>Pcs.</Unit>
               </QtySubHeading>
             </WeightInfo>
             <WeightInfo>
@@ -161,7 +156,7 @@ const Details = () => {
               dispatch(toggleExpandDetails());
             }}
           >
-            EXPAND PLAN
+            {isExpanded ? "COLLAPSE PLAN" : "EXPAND PLAN"}
           </ExpandButton>
         </ShipmentHeader>
         {shipmentData && (

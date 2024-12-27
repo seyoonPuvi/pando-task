@@ -6,8 +6,11 @@ import FilterHeader from "./FilterHeader";
 import BodyMain from "./BodyMain";
 
 const BodyContainer = styled.div`
-  height: 100vh;
-  background: white;
+  background-color: white;
+  width: 1440px;
+  height: 810px;
+  margin: auto;
+  overflow: hidden;
 `;
 
 const Body = () => {

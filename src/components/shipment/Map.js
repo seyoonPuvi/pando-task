@@ -15,34 +15,32 @@ L.Icon.Default.mergeOptions({
 
 // Custom Icons with external URLs
 const homeIcon = new L.Icon({
-  iconUrl: "https://i.postimg.cc/K8D4MFrD/Group-482108.png", // Direct URL
+  iconUrl: "https://i.postimg.cc/K8D4MFrD/Group-482108.png",
   iconRetinaUrl: "https://i.postimg.cc/K8D4MFrD/Group-482108.png",
   iconSize: [24, 24],
   iconAnchor: [12, 24],
   popupAnchor: [0, -24],
-  // shadowUrl: "https://i.postimg.cc/K8D4MFrD/Group-482108.png",
 });
 
 const flagIcon = new L.Icon({
-  iconUrl: "https://i.postimg.cc/9QmCs9Zy/Group-482112.png", // Direct URL
+  iconUrl: "https://i.postimg.cc/9QmCs9Zy/Group-482112.png",
   iconRetinaUrl: "https://i.postimg.cc/9QmCs9Zy/Group-482112.png",
   iconSize: [24, 24],
   iconAnchor: [12, 24],
   popupAnchor: [0, -24],
-  // shadowUrl: "https://i.postimg.cc/K8D4MFrD/Group-482112.png",
 });
 
 const Map = () => {
   const start = useSelector(
     (store) => store.shipmentView.selectedShipment?.deliverPoints?.startPoint
-  ); // Start: Minneapolis
+  );
   const pickup = useSelector(
     (store) => store.shipmentView.selectedShipment?.deliverPoints?.pickupPoint
-  ); // Pickup: Omaha
+  );
   const destination = useSelector(
     (store) =>
       store.shipmentView.selectedShipment?.deliverPoints?.destinationPoint
-  ); // Destination: Denver
+  );
 
   const polylinePositions = [start, pickup, destination];
 
@@ -51,7 +49,7 @@ const Map = () => {
       style={{ height: "500px", width: "100%", marginTop: "2rem" }}
       center={[41.5, -96]} // Center of the map
       zoom={4}
-      scrollWheelZoom={false} // Disable zooming with scroll wheel
+      zoomControl={false} // Disable zoom control buttons
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
