@@ -17,7 +17,7 @@ const ColumnIcon = styled(CiViewColumn)`
 `;
 
 const DisplayContainer = styled.div`
-  width: ${(props) => (props.showShipment ? "986px" : "1380px")};
+  width: ${(props) => (props.showShipment ? "986px" : "1390px")};
   height: ${(props) => (props.showShipment ? "700px" : "657px")};
   display: flex;
   flex-direction: column;
