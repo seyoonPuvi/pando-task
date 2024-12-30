@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/pando-task/static/css/main.bbb5eed8.css",
-    "main.js": "/pando-task/static/js/main.c9007c8d.js",
+    "main.js": "/pando-task/static/js/main.8156c40d.js",
     "index.html": "/pando-task/index.html",
     "main.bbb5eed8.css.map": "/pando-task/static/css/main.bbb5eed8.css.map",
-    "main.c9007c8d.js.map": "/pando-task/static/js/main.c9007c8d.js.map"
+    "main.8156c40d.js.map": "/pando-task/static/js/main.8156c40d.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb5eed8.css",
-    "static/js/main.c9007c8d.js"
+    "static/js/main.8156c40d.js"
   ]
 }
