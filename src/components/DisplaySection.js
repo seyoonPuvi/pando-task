@@ -25,7 +25,7 @@ const DisplayContainer = styled.div`
   gap: 10px;
   background-color: #f3f6fc;
   margin-top: 13px;
-  transition: width 0.3s ease-out;
+  transition: width 0.8s ease-out;
 `;
 const PlannedHeader = styled.div`
   width: 100%;

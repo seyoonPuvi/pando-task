@@ -1,5 +1,4 @@
 import React from "react";
-import ExpandableLineSvg from "../ExpandableLineSvg";
 import { Heading } from "../Shipment";
 import {
   DetailsContainer,
@@ -14,7 +13,6 @@ import {
   LocationContainer,
   ArrowContainer,
   ArrowImage,
-  DotLineImage,
   LocationDetails,
   GroupName,
   ShipmentHeader,
@@ -30,6 +28,11 @@ import {
   ExpandButton,
   ShipmentListMainContainer,
   ShipmentListContainer,
+  DotLineContainer,
+  DotLine,
+  ExpandLineContainer,
+  TopCircle,
+  ExpandLine,
 } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleExpandDetails } from "../../../utils/store/shipmentViewSlice";
@@ -74,11 +77,15 @@ const Details = () => {
                 src="https://i.postimg.cc/ydHD8LZb/Dot.png"
                 alt="Arrow"
               />
-              <DotLineImage />
+              <DotLineContainer>
+                <DotLine />
+              </DotLineContainer>
             </>
           ) : (
             <>
-              <DotLineImage />
+              <DotLineContainer>
+                <DotLine />
+              </DotLineContainer>
               <ArrowImage
                 src="https://i.postimg.cc/xqDQrCJW/Dot-1.png"
                 alt="Arrow"
@@ -94,9 +101,17 @@ const Details = () => {
     </LocationInfoContainer>
   );
 
+  const onRenderExpandLineContainer = () => (
+    <ExpandLineContainer isExpanded={isExpanded}>
+      <TopCircle></TopCircle>
+      <ExpandLine isExpanded={isExpanded}></ExpandLine>
+      <TopCircle></TopCircle>
+    </ExpandLineContainer>
+  );
+
   const onRenderExpandContainer = (showDestination) => (
     <ExpandContainer>
-      {!showDestination && <ExpandableLineSvg />}
+      {!showDestination && onRenderExpandLineContainer()}
       {isExpanded && (
         <ExpandInfoCard>
           <NameAndDistCont>

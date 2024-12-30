@@ -109,45 +109,53 @@ export const ShipmentListMainContainer = styled.div`
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
   scrollbar-width: none; /* For Firefox */
 `;
-export const ShipmentListContainer = styled.div``;
+export const ShipmentListContainer = styled.div`
+  width: 404px;
+  min-height: 82px;
+`;
 export const LocationInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-  width: 400px;
-  height: 42px;
+  width: 404px;
+  min-height: 42px;
   padding: 0px 20px 0px 10px;
-  gap: 8px;
 `;
 
 export const LocationContainer = styled.div`
   display: flex;
   column-gap: 10px;
+  align-items: flex-end;
 `;
 export const ArrowContainer = styled.div`
+  width: 16px;
+  height: 36px;
   display: flex;
   flex-direction: column;
+  padding-top: 5px;
 `;
 
 export const ArrowImage = styled.img`
-  height: 18px;
+  height: 16px;
   width: 16px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   padding-top: 3px;
 `;
 
-export const DotLineImage = styled.img`
+export const DotLineContainer = styled.div`
+  width: 16px;
+  height: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const DotLine = styled.div`
   width: 1px;
-  height: 25px;
-  margin: auto;
+  height: 10px;
   border: 1px dashed #b5c3cb;
 `;
 
 export const LocationDetails = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 2px;
 `;
 
 export const GroupName = styled.p`
@@ -160,20 +168,20 @@ export const Place = styled(GroupName)`
   font-weight: 400;
 `;
 export const ExpandContainer = styled.div`
+  width: 404px;
+  min-height: 40px;
+  padding: 0px 15px 0px 15px;
   display: flex;
-  width: 400px;
-  min-height: 42px;
-  padding: 0px 20px 0px 8px;
-  gap: 8px;
+  gap: 12px;
 `;
 
 export const ExpandInfoCard = styled(WeightInfoCard)`
   margin: 0;
   flex-grow: 1;
   align-self: center;
-  transition: all 0.35s ease-out;
   flex-direction: column;
   gap: 20px 10px;
+  transition: display 0.5s ease-out;
 `;
 
 export const WeightInfo = styled.div`
@@ -201,3 +209,28 @@ export const QtyHeading = styled.p`
 `;
 
 export const QtySubHeading = styled(WeightSubHeading)``;
+
+export const ExpandLineContainer = styled.div`
+  width: 6px;
+  height: ${(props) => (props.isExpanded ? "100px" : "40px")};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: height 0.5s ease-out;
+`;
+
+export const TopCircle = styled.div`
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border: 1px solid #515151;
+  border-radius: 50%;
+`;
+
+export const ExpandLine = styled.div`
+  width: 1.5px;
+  height: ${(props) => (props.isExpanded ? "90px" : "28px")};
+  background-color: #0076dd;
+  align-self: center;
+  transition: height 0.5s ease-out;
+`;

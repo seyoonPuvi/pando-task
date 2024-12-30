@@ -7,7 +7,11 @@ export const OutputListCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #fafafa;
+  background-color: ${(props) =>
+    props.isListSelected ? "#E9F1F5" : "#fafafa"};
+  cursor: pointer;
+
+  transition: width 0.3s ease-out;
 `;
 
 export const LeftContainer = styled.div`

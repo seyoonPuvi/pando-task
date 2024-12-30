@@ -96,7 +96,7 @@ const LabelSelectCont = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease-out;
 `;
 
 const Line = styled.div`
@@ -114,6 +114,7 @@ const LabelSelect = styled.div`
   gap: 5px;
   cursor: pointer;
   padding: 10px;
+  transition: all 0.5s ease-out;
 `;
 
 const Label = styled.p`
