@@ -143,7 +143,7 @@ const ListItem = ({ data, index }) => {
       onClick={() => {
         onClickShipmentList(data.id);
       }}
-      $isListSelected={isListSelected}
+      isListSelected={isListSelected}
     >
       <LeftContainer>
         <SelectionContainer>
