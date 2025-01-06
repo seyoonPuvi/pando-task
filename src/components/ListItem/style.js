@@ -38,9 +38,18 @@ export const OutputListCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${(props) =>
-    props.isListSelected ? "#E9F1F5" : "#fafafa"};
+  background-color: ${({ isListSelected }) =>
+    isListSelected ? "#E9F1F5" : "#fafafa"};
   cursor: pointer;
+  transition: width 0.3s ease-out, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: ${({ isListSelected }) =>
+      isListSelected ? "#E9F1F5" : "#ffffff"};
+    box-shadow: ${({ isListSelected }) =>
+      isListSelected ? "none" : "rgba(100, 100, 111, 0.1) 0px 2px 12px 0px"};
+  }
 
   &:hover ${DottedLine} {
     width: 60px;
@@ -49,12 +58,6 @@ export const OutputListCard = styled.div`
   &:hover ${Tag} {
     background-color: #a3e6d1;
   }
-  &:hover {
-    background-color: #ffffff;
-    box-shadow: rgba(100, 100, 111, 0.1) 0px 2px 12px 0px;
-  }
-
-  transition: width 0.3s ease-out;
 `;
 
 export const LeftContainer = styled.div`
