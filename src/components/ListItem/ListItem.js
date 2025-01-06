@@ -78,9 +78,13 @@ const ListItem = ({ data, index }) => {
       {!showShipment && (
         <RouteContainer>
           <CrossDoc>
-            {data.xdocLeft ? <Xdoc>X-doc</Xdoc> : onRenderRectangle("#D26568")}
+            {data.xdocLeft ? <Xdoc>X-dock</Xdoc> : onRenderRectangle("#D26568")}
             <DottedLine />
-            {data.xdocRight ? <Xdoc>X-doc</Xdoc> : onRenderRectangle("#1FCD93")}
+            {data.xdocRight ? (
+              <Xdoc>X-dock</Xdoc>
+            ) : (
+              onRenderRectangle("#1FCD93")
+            )}
           </CrossDoc>
           <TotalDropsContainer>
             <Tag>1 pickup{"(s)"}</Tag>
@@ -92,6 +96,7 @@ const ListItem = ({ data, index }) => {
         <Source>Grand Prairie</Source>
         <SourceDetails>TX, {"<Pincode>"}</SourceDetails>
       </DestinationCont>
+      <DivideLine />
     </SourceDestination>
   );
 
@@ -155,6 +160,7 @@ const ListItem = ({ data, index }) => {
           <Number>{index + 1}</Number>
         </NumberCol>
         {onRenderSourceDestinationContainer()}
+
         <CarrierContainer>
           <Source>
             {data.carrier.name.length > 16
@@ -165,7 +171,7 @@ const ListItem = ({ data, index }) => {
         </CarrierContainer>
         {onRenderVehicleStatsContainer()}
 
-        <DivideLine />
+        {!showShipment && <DivideLine />}
         {!showShipment && onRenderWtAndQtyContainer()}
       </LeftContainer>
       <RightContainer showShipment>

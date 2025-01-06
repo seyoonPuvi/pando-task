@@ -96,13 +96,24 @@ const LabelSelectCont = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.5s ease-out;
+
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  visibility: hidden;
+
+  ${({ showFilter }) =>
+    showFilter &&
+    `
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  `}
 `;
 
 const Line = styled.div`
   height: 100%;
-  width: 1px;
-  border: 1px solid #616161;
+  border: 1px solid #a3a3a380;
 `;
 
 const LabelSelect = styled.div`
@@ -138,17 +149,18 @@ const CloseIconCont = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
 `;
 
 const CloseIcon = styled(IoMdClose)`
-  font-size: 20px;
+  font-size: 16px;
   color: #616161;
-  font-weight: 700;
+  font-weight: 300;
 `;
 const FilterHeader = () => {
   const [showFilter, ToggleFilter] = useState(false);
+
   return (
     <FilterHeaderContainer>
       <FHMainContainer>
@@ -168,25 +180,24 @@ const FilterHeader = () => {
               <FilterIcon />
             </MoreFiterCont>
           )}
-          {showFilter && (
-            <LabelSelectCont>
-              <Line />
-              <LabelSelect>
-                <Label>Label</Label>
-                <Label>:</Label>
-                <Label>Select</Label>
-                <LabelDropDown />
-              </LabelSelect>
-              <CloseIconCont
-                type="button"
-                onClick={() => {
-                  ToggleFilter(false);
-                }}
-              >
-                <CloseIcon />
-              </CloseIconCont>
-            </LabelSelectCont>
-          )}
+
+          <LabelSelectCont showFilter={showFilter}>
+            <Line />
+            <LabelSelect>
+              <Label>Label</Label>
+              <Label>:</Label>
+              <Label>Select</Label>
+              <LabelDropDown />
+            </LabelSelect>
+            <CloseIconCont
+              type="button"
+              onClick={() => {
+                ToggleFilter(false);
+              }}
+            >
+              <CloseIcon />
+            </CloseIconCont>
+          </LabelSelectCont>
         </LeftContainer>
       </FHMainContainer>
     </FilterHeaderContainer>

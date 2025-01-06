@@ -151,15 +151,15 @@ const DisplaySection = () => {
         </THUTextContainer>
       </TableCell>
       <TableCell width="170px">
-        <THUHeaderText width="82px">Carrier | Type</THUHeaderText>
+        <THUHeaderText width="82px">CARRIER | TYPE</THUHeaderText>
       </TableCell>
       <TableCell width={showShipment ? "314px" : "200px"}>
-        <THUHeaderText width="149px">Max Utilisation | Vehicle</THUHeaderText>
+        <THUHeaderText width="149px">MAX UTILISATION | VEHICLE</THUHeaderText>
       </TableCell>
       {!showShipment && (
         <TableCell width="382px">
           <THUTextContainer>
-            <THUHeaderText width="121px">Total | Weight | Qty</THUHeaderText>
+            <THUHeaderText width="121px">TOTAL | WEIGHT | QTY</THUHeaderText>
             <DownArrowIcon />
           </THUTextContainer>
         </TableCell>

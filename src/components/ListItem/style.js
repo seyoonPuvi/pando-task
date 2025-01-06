@@ -1,5 +1,36 @@
 import styled from "styled-components";
 
+export const DottedLine = styled.div`
+  width: 40px;
+  height: 0px;
+  border-top: 1px dotted rgba(54, 87, 126, 0.5);
+  opacity: 1;
+  transition: width 0.3s ease;
+`;
+export const CrossDoc = styled.div`
+  min-width: 54.11px;
+  height: 7.05px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+`;
+
+export const Tag = styled.p`
+  height: 15px;
+  border-radius: 2px;
+  padding: 0.5px 2px 0.5px 2px;
+  background-color: #eef2f4;
+  color: #422500;
+  font-family: Open Sans;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 13.62px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  transition: all 0.3s ease;
+`;
+
 export const OutputListCard = styled.div`
   width: 100%;
   height: 59px;
@@ -10,6 +41,18 @@ export const OutputListCard = styled.div`
   background-color: ${(props) =>
     props.isListSelected ? "#E9F1F5" : "#fafafa"};
   cursor: pointer;
+
+  &:hover ${DottedLine} {
+    width: 60px;
+  }
+
+  &:hover ${Tag} {
+    background-color: #a3e6d1;
+  }
+  &:hover {
+    background-color: #ffffff;
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 2px 12px 0px;
+  }
 
   transition: width 0.3s ease-out;
 `;
@@ -112,37 +155,6 @@ export const SourceDetails = styled.p`
   color: #234357;
 `;
 
-export const DottedLine = styled.div`
-  width: 40px; /* Initial line length */
-  height: 0px; /* Ensures it's a horizontal line */
-  border-top: 1px dotted rgba(54, 87, 126, 0.5); /* Dotted blue line with 50% opacity */
-  opacity: 1; /* Ensure full visibility */
-  transition: width 0.3s ease; /* Smooth transition for width change */
-`;
-export const CrossDoc = styled.div`
-  min-width: 54.11px;
-  height: 7.05px;
-  display: flex;
-  align-items: center;
-  margin: auto;
-`;
-
-export const Tag = styled.p`
-  height: 15px;
-  border-radius: 2px;
-  padding: 0.5px 2px 0.5px 2px;
-  background-color: #eef2f4; /* Default background color */
-  color: #422500;
-  font-family: Open Sans;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 13.62px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  transition: all 0.3s ease;
-`;
-
 export const TotalDropsContainer = styled.div`
   width: 107px;
   height: 15px;
@@ -157,13 +169,6 @@ export const RouteContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  cursor: pointer;
-  &:hover ${DottedLine} {
-    width: 60px;
-  }
-  &:hover ${Tag} {
-    background-color: #a3e6d1;
-  }
 `;
 
 export const DestinationCont = styled.div`
@@ -172,7 +177,6 @@ export const DestinationCont = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-right: 20px;
 `;
 
 export const CarrierContainer = styled(SourceCont)`
@@ -268,9 +272,8 @@ export const MaxText = styled.p`
 `;
 
 export const DivideLine = styled.div`
-  width: 2px;
   height: 39px;
-  border: 1px solid #e2eaec;
+  border: 1px dashed #e2eaec;
 `;
 
 export const TotalAndQtyContainer = styled.div`
